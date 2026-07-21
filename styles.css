@@ -260,7 +260,7 @@ blockquote.pull { position: relative; z-index: 2; margin: 34px clamp(20px,4vw,52
   height: 42px; width: auto; object-fit: contain;
 }
 @media (prefers-reduced-motion: no-preference) {
-  .tm-track { animation: tm-scroll 34s linear infinite; }
+  .tm-track { animation: tm-scroll 46s linear infinite; }
   .tm-track-wrap:hover .tm-track { animation-play-state: paused; }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -269,3 +269,30 @@ blockquote.pull { position: relative; z-index: 2; margin: 34px clamp(20px,4vw,52
   .tm-track .tm-dup { display: none; }
 }
 @keyframes tm-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* ---------- portfolio gallery + before/after (Аудио) ---------- */
+.pf-gallery {
+  position: relative; z-index: 2;
+  display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px;
+  padding: 0 clamp(20px,4vw,52px);
+}
+.pf-gallery img { width: 100%; height: 210px; object-fit: cover; display: block; border-radius: 2px; }
+.pf-gallery a:nth-child(1), .pf-gallery a:nth-child(4) { grid-column: span 2; }
+@media (max-width: 900px) { .pf-gallery { grid-template-columns: repeat(3,1fr); } .pf-gallery a:nth-child(1), .pf-gallery a:nth-child(4) { grid-column: span 3; } .pf-gallery img { height: 240px; } }
+.pf-gallery a { position: relative; overflow: hidden; }
+.pf-gallery a .cap {
+  position: absolute; left: 10px; bottom: 8px; z-index: 1;
+  font-family: var(--font-mono); font-size: .64rem; color: #fff;
+  text-shadow: 0 1px 4px rgba(0,0,0,.6); opacity: 0; transition: opacity .2s ease;
+}
+.pf-gallery a:hover .cap, .pf-gallery a:focus-visible .cap { opacity: 1; }
+
+.ba-row { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); margin: 30px clamp(20px,4vw,52px) 0; }
+@media (max-width: 720px) { .ba-row { grid-template-columns: 1fr; } }
+.ba-cell { background: var(--bg); padding: 22px 22px 24px; }
+.ba-cell .ba-k { font-family: var(--font-mono); font-size: .68rem; text-transform: uppercase; letter-spacing: .08em; opacity: .6; }
+.ba-cell h4 { margin: 8px 0 14px; font-family: var(--font-display); font-variation-settings: "wght" 700, "wdth" 100; font-size: 1.05rem; }
+.ba-player { display: flex; align-items: center; gap: 12px; }
+.ba-play { flex: none; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: .8rem; background: var(--accent); color: var(--bg); }
+.ba-wave { flex: 1; height: 44px; }
+.ba-note { margin-top: 10px; font-size: .74rem; opacity: .55; }
