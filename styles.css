@@ -257,11 +257,8 @@ blockquote.pull { position: relative; z-index: 2; margin: 34px clamp(20px,4vw,52
 }
 .tm-track { display: flex; align-items: center; gap: clamp(48px,7vw,96px); width: max-content; }
 .tm-track img {
-  height: 34px; width: auto; max-width: 140px; object-fit: contain;
-  filter: grayscale(1) opacity(.55);
-  transition: filter .25s ease;
+  height: 42px; width: auto; object-fit: contain;
 }
-.tm-track img:hover { filter: grayscale(0) opacity(1); }
 @media (prefers-reduced-motion: no-preference) {
   .tm-track { animation: tm-scroll 34s linear infinite; }
   .tm-track-wrap:hover .tm-track { animation-play-state: paused; }
