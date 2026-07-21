@@ -15,22 +15,24 @@
 </div>
 
 <div class="labintro" style="max-width:680px;">
-  <p class="eyebrow">Правка от 2026-07-21 · без фото одного направления</p>
-  <h1>Главная — ничья территория. Фото со студией — только внутри «Аудио».</h1>
-  <p>Микрофон на входной странице подсказывал «здесь про звук» — неверно для страницы, которая ведёт сразу в три направления. Вместо фото — знак-диафрагма (он же лепесток Flora), который не принадлежит ни аудио, ни видео, ни фото по отдельности.</p>
+  <p class="eyebrow">Правка от 2026-07-21 · премиум-заход, живое фото</p>
+  <h1>Главная — живое фото студии вместо абстрактного знака.</h1>
+  <p>Абстрактная диафрагма читалась «дёшево» и ничего не обещала. Заменили на настоящий кадр из студии — люди, свет, тепло — который передаёт атмосферу, а не одно направление. Добавили глубину (затемнение, зерно плёнки, медленный наезд), крупную типографику и мягкое появление на входе — первый экран, сделанный «дорого». Фото меняется одной строкой <code>background-image</code> в секции ниже.</p>
 </div>
 
 <!-- ============ MINIMAL HERO — нейтральный знак вместо фото ============ -->
-<section class="mh reg-quiet" style="background:var(--bg); color:var(--ink);">
+<section class="mh reg-quiet" style="background:#161210;">
+  <!-- фото-герой: настоящий кадр студии. Заменить студию → поменять URL ниже. -->
+  <div class="mh-photo" style="background-image:url('photos/extra-2.jpg'); background-position:center 32%;"></div>
+  <div class="mh-scrim"></div>
+  <div class="mh-grain"></div>
+
   <div class="mh-top">
     <div class="mh-lockup"><b>FLORA</b><span>CREATIVE STUDIO</span></div>
     <div class="mh-lang"><a href="#" aria-current="true">RU</a><a href="#">LV</a><a href="#">EN</a></div>
   </div>
 
   <div class="mh-mid">
-    <div style="width:min(180px,34vw); height:min(180px,34vw); margin:0 auto 30px; opacity:.92;">
-      <canvas data-device="iris" data-stops="dna" data-hole data-bg="#161210" data-scale="0.88" data-rotation="-0.1" style="width:100%;height:100%"></canvas>
-    </div>
     <p class="mh-prompt">Что вас интересует сегодня?</p>
     <nav class="mh-choices">
       <a href="audio.html">Аудио</a>
