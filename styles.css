@@ -241,5 +241,34 @@ blockquote.pull { position: relative; z-index: 2; margin: 34px clamp(20px,4vw,52
 .mh-scroll { display: flex; align-items: center; gap: 8px; }
 .mh-scroll .ln { width: 1px; height: 16px; background: currentColor; opacity: .6; }
 
-.mh-below { max-width: 640px; margin: 0 auto; padding: clamp(60px,9vw,110px) 24px; text-align: center; }
+.mh-below { max-width: 640px; margin: 0 auto; padding: clamp(60px,9vw,110px) 24px 10px; text-align: center; }
 .mh-below p { color: var(--page-muted); font-size: .95rem; line-height: 1.6; }
+
+/* ---------- trust marquee: медленная бегущая строка логотипов ---------- */
+.trust-marquee { padding: 40px 0 clamp(60px,9vw,100px); }
+.trust-marquee .tm-label {
+  text-align: center; font-size: .72rem; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--page-muted); margin: 0 0 30px;
+}
+.tm-track-wrap {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+}
+.tm-track { display: flex; align-items: center; gap: clamp(48px,7vw,96px); width: max-content; }
+.tm-track img {
+  height: 34px; width: auto; max-width: 140px; object-fit: contain;
+  filter: grayscale(1) opacity(.55);
+  transition: filter .25s ease;
+}
+.tm-track img:hover { filter: grayscale(0) opacity(1); }
+@media (prefers-reduced-motion: no-preference) {
+  .tm-track { animation: tm-scroll 34s linear infinite; }
+  .tm-track-wrap:hover .tm-track { animation-play-state: paused; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tm-track-wrap { -webkit-mask-image: none; mask-image: none; }
+  .tm-track { flex-wrap: wrap; justify-content: center; width: auto; }
+  .tm-track .tm-dup { display: none; }
+}
+@keyframes tm-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
