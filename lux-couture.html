@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flora — кутюр-сериф на чёрном</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0A0908; --ink:#E9E2D5; --muted:rgba(233,226,213,.5);
+    --gold:#C6A15B; --line:rgba(198,161,91,.5);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--bg);color:var(--ink);font-family:"Cormorant Garamond",Georgia,serif;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden}
+  body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:radial-gradient(90% 70% at 50% 42%, rgba(198,161,91,.09), transparent 60%),
+              radial-gradient(140% 120% at 50% 120%, rgba(0,0,0,.5), transparent 55%);}
+  body::after{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+
+  .wrap{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;align-items:center;
+    text-align:center;padding:clamp(26px,3.4vw,50px) clamp(24px,5vw,64px) clamp(24px,3vw,44px);}
+
+  .brand{font-family:"Space Grotesk",sans-serif;font-size:.68rem;letter-spacing:.5em;text-transform:uppercase;color:var(--ink)}
+  .brand+.hair{width:34px;height:1px;background:var(--gold);margin-top:16px}
+
+  .center{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center}
+  .kicker{font-family:"Space Grotesk",sans-serif;font-size:.66rem;letter-spacing:.34em;text-transform:uppercase;
+    color:var(--gold);margin-bottom:clamp(20px,3vw,34px)}
+  .lead{font-weight:300;font-size:clamp(2.8rem,9vw,7rem);line-height:1.02;letter-spacing:.005em}
+  .lead em{font-style:italic;color:var(--gold);font-weight:300}
+  .hair-wide{width:min(340px,60vw);height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent);
+    margin:clamp(26px,3.6vw,42px) 0}
+  .choices{font-family:"Space Grotesk",sans-serif;display:flex;align-items:center;gap:clamp(16px,2.4vw,30px);
+    flex-wrap:wrap;justify-content:center}
+  .choices a{font-size:.74rem;letter-spacing:.26em;text-transform:uppercase;text-decoration:none;color:var(--ink)}
+  .choices .dot{width:4px;height:4px;border-radius:50%;background:var(--gold);opacity:.7}
+  @media (prefers-reduced-motion:no-preference){.choices a{transition:color .25s ease}}
+  .choices a:hover,.choices a:focus-visible{color:var(--gold)}
+  .choices a:focus-visible{outline:2px solid var(--gold);outline-offset:8px}
+
+  .foot{font-family:"Space Grotesk",sans-serif;font-size:.64rem;letter-spacing:.28em;text-transform:uppercase;color:var(--muted)}
+
+  @media (prefers-reduced-motion:no-preference){
+    .brand,.hair,.kicker,.lead,.hair-wide,.choices,.foot{opacity:0;transform:translateY(14px);animation:rise 1s cubic-bezier(.2,.8,.2,1) forwards}
+    .kicker{animation-delay:.14s}.lead{animation-delay:.22s}.hair-wide{animation-delay:.36s}.choices{animation-delay:.44s}.foot{animation-delay:.58s}
+  }
+  @keyframes rise{to{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <span class="brand">Flora</span>
+  <span class="hair"></span>
+
+  <main class="center">
+    <p class="kicker">Creative Studio · Rīga</p>
+    <h1 class="lead">Звук. Кадр. <em>Свет.</em></h1>
+    <span class="hair-wide"></span>
+    <nav class="choices">
+      <a href="audio.html">Аудио</a><span class="dot"></span>
+      <a href="video.html">Видео</a><span class="dot"></span>
+      <a href="video.html#v5">Фото</a>
+    </nav>
+  </main>
+
+  <footer class="foot">Artilerijas iela 40k-4</footer>
+</div>
+</body>
+</html>

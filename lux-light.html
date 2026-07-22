@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flora — светлая тихая роскошь</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..500;1,9..144,300..400&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F1EBE1; --ink:#1A1611; --muted:rgba(26,22,17,.52);
+    --line:rgba(26,22,17,.18); --accent:#8C4A63;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:"Fraunces",Georgia,serif; -webkit-font-smoothing:antialiased; overflow-x:hidden;
+  }
+  /* тёплая виньетка — даёт объём светлому фону, не плоский лист */
+  body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:radial-gradient(110% 80% at 50% 30%, rgba(255,255,255,.5), transparent 55%),
+              radial-gradient(120% 120% at 50% 120%, rgba(140,74,99,.10), transparent 55%);}
+  body::after{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.04;mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+
+  .wrap{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;align-items:center;
+    text-align:center;padding:clamp(24px,3.4vw,48px) clamp(24px,5vw,64px) clamp(24px,3vw,44px);}
+
+  .brand{font-family:"Space Grotesk",sans-serif;font-size:.7rem;letter-spacing:.42em;text-transform:uppercase;
+    color:var(--muted)}
+
+  .center{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;max-width:min(92vw,900px)}
+  .lead{font-weight:300;font-size:clamp(2.5rem,7.6vw,6rem);line-height:1.04;letter-spacing:-.018em;
+    font-optical-sizing:auto}
+  .lead em{font-style:italic;font-weight:300;color:var(--accent)}
+  .divider{width:56px;height:1px;background:var(--line);margin:clamp(28px,4vw,46px) 0}
+  .choices{font-family:"Space Grotesk",sans-serif;display:flex;gap:clamp(20px,3.4vw,46px);flex-wrap:wrap;justify-content:center}
+  .choices a{font-size:.76rem;letter-spacing:.28em;text-transform:uppercase;text-decoration:none;color:var(--ink);
+    position:relative;padding-bottom:8px}
+  .choices a::after{content:"";position:absolute;left:50%;right:50%;bottom:0;height:1px;background:var(--accent)}
+  @media (prefers-reduced-motion:no-preference){.choices a::after{transition:left .35s ease,right .35s ease}}
+  .choices a:hover::after,.choices a:focus-visible::after{left:0;right:0}
+  .choices a:focus-visible{outline:2px solid var(--accent);outline-offset:8px}
+
+  .foot{font-family:"Space Grotesk",sans-serif;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+
+  @media (prefers-reduced-motion:no-preference){
+    .brand,.lead,.divider,.choices,.foot{opacity:0;transform:translateY(14px);animation:rise 1s cubic-bezier(.2,.8,.2,1) forwards}
+    .lead{animation-delay:.12s}.divider{animation-delay:.26s}.choices{animation-delay:.34s}.foot{animation-delay:.5s}
+  }
+  @keyframes rise{to{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <span class="brand">Flora Creative Studio</span>
+
+  <main class="center">
+    <h1 class="lead">Звук, кадр<br>и <em>свет</em>.</h1>
+    <span class="divider"></span>
+    <nav class="choices">
+      <a href="audio.html">Аудио</a>
+      <a href="video.html">Видео</a>
+      <a href="video.html#v5">Фото</a>
+    </nav>
+  </main>
+
+  <footer class="foot">Rīga · Latvia</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flora — тёмный техно-люкс</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#08090B; --ink:#EDEBE6; --muted:rgba(237,235,230,.42);
+    --line:rgba(237,235,230,.12);
+    --grad:linear-gradient(90deg,#FFD65A,#FB8C3C 52%,#EC1E93);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:"Space Grotesk",system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  /* глубина без фото: мягкая радиальная подсветка + зерно */
+  body::before{
+    content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:radial-gradient(120% 80% at 18% 8%, rgba(236,30,147,.10), transparent 42%),
+               radial-gradient(120% 90% at 92% 100%, rgba(251,140,60,.08), transparent 46%);
+  }
+  body::after{
+    content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .wrap{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;
+    padding:clamp(22px,3.2vw,46px) clamp(24px,4.4vw,64px) clamp(22px,3vw,42px);}
+
+  .top{display:flex;justify-content:space-between;align-items:baseline;}
+  .mark{font-weight:600;letter-spacing:.16em;font-size:.92rem}
+  .meta{font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+  .rule{height:1px;margin-top:16px;background:linear-gradient(90deg,var(--line),transparent 60%);position:relative}
+  .rule::before{content:"";position:absolute;left:0;top:0;height:1px;width:96px;background:var(--grad)}
+
+  .center{flex:1;display:flex;flex-direction:column;justify-content:center;padding:6vh 0}
+  .prompt{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-bottom:clamp(24px,4vw,44px)}
+
+  .choices{display:flex;flex-direction:column;gap:clamp(6px,1.4vw,16px)}
+  .choice{display:flex;align-items:baseline;gap:clamp(16px,2.6vw,40px);text-decoration:none;color:var(--ink);
+    width:max-content;max-width:100%;position:relative;}
+  .choice .idx{font-size:.8rem;font-weight:500;letter-spacing:.1em;color:var(--muted);flex:none;
+    transform:translateY(-.9em)}
+  .choice .word{font-size:clamp(2.6rem,10vw,7rem);font-weight:400;letter-spacing:-.035em;line-height:.98;
+    position:relative}
+  .choice .word::after{content:"";position:absolute;left:0;right:100%;bottom:.12em;height:3px;background:var(--grad)}
+  .choice .go{font-size:clamp(1rem,2vw,1.4rem);color:var(--muted);align-self:center;opacity:0;transform:translateX(-8px)}
+  @media (prefers-reduced-motion:no-preference){
+    .choice .word::after{transition:right .4s cubic-bezier(.2,.8,.2,1)}
+    .choice .go{transition:opacity .3s ease,transform .3s ease}
+    .choice{transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+    .choice:hover{transform:translateX(10px)}
+  }
+  .choice:hover .word::after,.choice:focus-visible .word::after{right:0}
+  .choice:hover .go,.choice:focus-visible .go{opacity:1;transform:none}
+  .choice:hover .idx{color:var(--ink)}
+  .choice:focus-visible{outline:2px solid #EC1E93;outline-offset:8px;border-radius:2px}
+
+  .foot{display:flex;justify-content:space-between;align-items:baseline;font-size:.68rem;letter-spacing:.06em;color:var(--muted)}
+  .foot a{color:inherit;text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:2px}
+  .lang{display:flex;gap:14px}
+  .lang a{color:var(--muted);text-decoration:none}
+  .lang a[aria-current]{color:var(--ink)}
+
+  @media (prefers-reduced-motion:no-preference){
+    .top,.prompt,.choice,.foot{opacity:0;transform:translateY(16px);animation:rise .9s cubic-bezier(.2,.8,.2,1) forwards}
+    .prompt{animation-delay:.12s}
+    .choice:nth-of-type(1){animation-delay:.2s}
+    .choice:nth-of-type(2){animation-delay:.3s}
+    .choice:nth-of-type(3){animation-delay:.4s}
+    .foot{animation-delay:.55s}
+  }
+  @keyframes rise{to{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="top">
+      <span class="mark">FLORA</span>
+      <span class="meta">Creative Studio · Rīga</span>
+    </div>
+    <div class="rule"></div>
+  </header>
+
+  <main class="center">
+    <p class="prompt">Что вас интересует сегодня</p>
+    <nav class="choices">
+      <a class="choice" href="audio.html"><span class="idx">01</span><span class="word">Аудио</span><span class="go">↗</span></a>
+      <a class="choice" href="video.html"><span class="idx">02</span><span class="word">Видео</span><span class="go">↗</span></a>
+      <a class="choice" href="video.html#v5"><span class="idx">03</span><span class="word">Фото</span><span class="go">↗</span></a>
+    </nav>
+  </main>
+
+  <footer class="foot">
+    <span>Artilerijas iela 40k-4</span>
+    <span class="lang"><a href="#" aria-current="true">RU</a><a href="#">LV</a><a href="#">EN</a></span>
+  </footer>
+</div>
+</body>
+</html>
